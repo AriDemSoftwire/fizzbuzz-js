@@ -1,5 +1,6 @@
 // Here, we create our main function.
 function fizzbuzz() {
+
   let fizz = "Fizz";
   let buzz = "Buzz";
   let bang = "Bang";
@@ -8,10 +9,6 @@ function fizzbuzz() {
 
   let wordToLog = [];
   let wordToLogReverse = [];
-
-// if 11 - ONLY print Bong
-// if 13 - print Fezz before B-s and after F-s
-// if 17 - reverse the existig set of words
 
 function divisibleBy3 () {
   if (i % 3 !== 0) {
@@ -40,18 +37,28 @@ function divisibleBy7 () {
 function divisibleBy11 () {
   if (i % 11 !== 0) {
     return;
+  } else if (i % 13 === 0) {
+    wordToLog.push(bong);
   } else {
     wordToLog = [];
     wordToLog.push(bong);
-}
+} 
 }
 
 function divisibleBy13 () {
   if (i % 13 !== 0) {
     return;
-  } else {
-  wordToLog.push(fezz);
+   } else if (wordToLog.length > 1) {
+   for (j = wordToLog.length; j > 0; j--) {
+if (wordToLog[j - 1][0] === 'B') {
+  wordToLog.splice(j, 0, fezz);
 }
+   }
+  } else if (wordToLog.length >= 1 && wordToLog[0][0] === 'B') {
+    wordToLog.unshift(fezz);
+  } else {
+    wordToLog.push(fezz);
+  }
 }
 
 function divisibleBy17 () {
@@ -63,24 +70,25 @@ function divisibleBy17 () {
 }
 }
 
-for (i = 1; i <= 350; i++) {
+  for (i = 1; i <= 350; i++) {
 
-wordToLog = [];
-wordToLogReverse = [];
+  wordToLog = [];
+  wordToLogReverse = [];
 
-divisibleBy3();
-divisibleBy5();
-divisibleBy7();
-divisibleBy11();
-// divisibleBy13();
-divisibleBy17();
-if (wordToLog.length !== 0) {
-  console.log(wordToLog.join(""));
-} else {
-  console.log(i);
-}
-}
+  divisibleBy3();
+  divisibleBy5();
+  divisibleBy7();
+  divisibleBy11();
+  divisibleBy13();
+  divisibleBy17();
 
+  if (wordToLog.length !== 0) {
+      console.log(wordToLog.join(""));
+    } else {
+      console.log(i);
+    }
+
+  }
 }
 
 // Now we run the main function...
