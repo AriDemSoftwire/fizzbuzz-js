@@ -6,33 +6,81 @@ function fizzbuzz() {
   let bong = "Bong";
   let fezz = "Fezz";
 
-  for (let i = 1; i <= 2500; i++) {
-    let wordToLog = [];
-    let wordToLogReverse = [];
-    if (i % 3 === 0 && i % 11 !== 0) {
-      wordToLog.push(fizz);
-    }
-    if (i % 13 === 0) {
-      wordToLog.push(fezz);
-    }
-    if (i % 5 === 0 && i % 11 !== 0) {
-      wordToLog.push(buzz);
-    }
-    if (i % 7 === 0 && i % 11 !== 0) {
-      wordToLog.push(bang);
-    }
-    if (i % 11 === 0) {
-      wordToLog.push(bong);
-    }
-    if (i % 17 === 0 && wordToLog.length > 0) {
-      wordToLogReverse = wordToLog.reverse();
-      console.log(wordToLogReverse.join(""));
-    } else if (i % 3 === 0 || i % 5 === 0 || i % 7 === 0 || i % 13 === 0 || i % 11 === 0) {
-      console.log(wordToLog.join(""));
+  let wordToLog = [];
+  let wordToLogReverse = [];
+
+// if 11 - ONLY print Bong
+// if 13 - print Fezz before B-s and after F-s
+// if 17 - reverse the existig set of words
+
+function divisibleBy3 () {
+  if (i % 3 !== 0) {
+      return;
     } else {
-      console.log(i);
-    }
+    wordToLog.push(fizz)
+  };
+}
+
+function divisibleBy5 () {
+  if (i % 5 !== 0) {
+    return;
+  } else {
+  wordToLog.push(buzz);
   }
+}
+
+function divisibleBy7 () {
+  if (i % 7 !== 0) {
+    return;
+  } else {
+  wordToLog.push(bang);
+  }
+}
+
+function divisibleBy11 () {
+  if (i % 11 !== 0) {
+    return;
+  } else {
+    wordToLog = [];
+    wordToLog.push(bong);
+}
+}
+
+function divisibleBy13 () {
+  if (i % 13 !== 0) {
+    return;
+  } else {
+  wordToLog.push(fezz);
+}
+}
+
+function divisibleBy17 () {
+  if (i % 17 !== 0) {
+    return;
+  } else {
+  wordToLogReverse = wordToLog.reverse();
+  wordToLog = wordToLogReverse;
+}
+}
+
+for (i = 1; i <= 350; i++) {
+
+wordToLog = [];
+wordToLogReverse = [];
+
+divisibleBy3();
+divisibleBy5();
+divisibleBy7();
+divisibleBy11();
+// divisibleBy13();
+divisibleBy17();
+if (wordToLog.length !== 0) {
+  console.log(wordToLog.join(""));
+} else {
+  console.log(i);
+}
+}
+
 }
 
 // Now we run the main function...
